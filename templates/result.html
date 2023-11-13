@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result:</h1>
+    
+    <form method="post" action="/">
+        <label for="num1">Enter the first number:</label>
+        <input type="text" name="num1" required>
+        
+        <label for="num2">Enter the second number:</label>
+        <input type="text" name="num2" required>
+
+        <label for="operation">Select operation:</label>
+        <select name="operation" required>
+            <option value="add">Add</option>
+            <option value="sub">Subtract</option>
+            <option value="sum_of_digits">Sum of Digits</option>
+            <option value="is_palindrome">Is Palindrome</option>
+            <option value="myzip">My Zip</option>  
+        </select>
+        
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result_add %}
+        <h3>Sum (Addition): {{ result_add }}</h3>
+    {% endif %}
+
+    {% if result_sub %}
+        <h3>Result (Subtraction): {{ result_sub }}</h3>
+    {% endif %}
+
+   
+    {% if result_sum_of_digits is not none %}
+        <h3>Sum of Digits: {{ result_sum_of_digits }}</h3>
+    {% endif %}
+
+    
+    {% if result_is_palindrome is not none %}
+        <h3>Is Palindrome: {{ result_is_palindrome }}</h3>
+    {% endif %}
+
+    
+    {% if result_myzip is not none %}
+        <h3>My Zip Result: {{ result_myzip }}</h3>
+    {% endif %}
+
+    <form method="post" action="/">
+        <label for="num_for_sum">Enter a number for Sum of Digits:</label>
+        <input type="text" name="num_for_sum" required>
+        <input type="hidden" name="operation" value="sum_of_digits">
+        <button type="submit">Calculate Sum of Digits</button>
+    </form>
+
+    
+    <form method="post" action="/">
+        <label for="num_for_palindrome">Enter a number for Is Palindrome:</label>
+        <input type="text" name="num_for_palindrome" required>
+        <input type="hidden" name="operation" value="is_palindrome">
+        <button type="submit">Check Is Palindrome</button>
+    </form>
+
+    
+    <form method="post" action="/">
+        <label for="list1">Enter the first list (comma-separated):</label>
+        <input type="text" name="list1" required>
+        <label for="list2">Enter the second list (comma-separated):</label>
+        <input type="text" name="list2" required>
+        <input type="hidden" name="operation" value="myzip">
+        <button type="submit">My Zip</button>
+    </form>
+</body>
+</html>
